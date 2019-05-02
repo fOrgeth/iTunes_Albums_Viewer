@@ -27,7 +27,7 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                float columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 140,
+                float columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160,
                         AlbumsListFragment.this.getActivity().getResources().getDisplayMetrics());
                 int width = recyclerView.getWidth();
                 int columnCount = Math.round(width / columnWidth);
