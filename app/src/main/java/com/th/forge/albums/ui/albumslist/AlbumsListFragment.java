@@ -85,6 +85,7 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
         recyclerView.setVisibility(View.GONE);
         txtNoAlbums.setVisibility(View.GONE);
         circularProgressView.setVisibility(View.VISIBLE);
+
     }
 
     @Override

@@ -12,7 +12,7 @@ public class Sample {
         for (int i = 0; i < 20; i++) {
             Album album = new Album("Title " + i + 1,
                     "https://is2-ssl.mzstatic.com/image/thumb/Music/v4/07/be/69/07be695d-31cb-a84c-c9d8-de3dd33fe414/source/600x600bb.jpg",
-                    (i + 1) * 3);
+                    (Long.valueOf(i)) * 3);
             sample.add(album);
         }
         sample.get(1).setArtWorkUrl("https://is4-ssl.mzstatic.com/image/thumb/Music7/v4/f7/17/64/f717645e-7fb5-6cc5-fa54-3a82d4e0287b/source/600x600bb.jpg");

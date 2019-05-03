@@ -22,7 +22,7 @@ public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements
 
     void loadAlbums() {
         getViewState().startLoading();
-        new AlbumsRepository(this).loadSampleAlbums();
+        new AlbumsRepository(this).loadAlbums();
     }
 
     void searchByAlbum() {

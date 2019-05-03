@@ -3,10 +3,10 @@ package com.th.forge.albums.data.db.model;
 public class Album {
     private String title;
     private String artWorkUrl;
-    private Integer trackCount;
+    private Long trackCount;
 
     //ToDo: tmp, rm
-    public Album(String title, String artWorkUrl, Integer trackCount) {
+    public Album(String title, String artWorkUrl, Long trackCount) {
         this.title = title;
         this.artWorkUrl = artWorkUrl;
         this.trackCount = trackCount;
@@ -28,11 +28,11 @@ public class Album {
         this.artWorkUrl = artWorkUrl;
     }
 
-    public Integer getTrackCount() {
+    public Long getTrackCount() {
         return trackCount;
     }
 
-    public void setTrackCount(Integer trackCount) {
+    public void setTrackCount(Long trackCount) {
         this.trackCount = trackCount;
     }
 }

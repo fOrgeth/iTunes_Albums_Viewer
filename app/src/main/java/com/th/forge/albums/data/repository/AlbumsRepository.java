@@ -3,18 +3,30 @@ package com.th.forge.albums.data.repository;
 import android.os.Handler;
 import android.util.Log;
 
+import com.th.forge.albums.App;
 import com.th.forge.albums.data.db.model.Album;
+import com.th.forge.albums.data.db.model.AlbumMapper;
+import com.th.forge.albums.data.db.model.Mapper;
+import com.th.forge.albums.data.network.ApiService;
+import com.th.forge.albums.data.network.model.AlbumResult;
+import com.th.forge.albums.data.network.model.AlbumsResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AlbumsRepository {
     public static final String TAG = AlbumsRepository.class.getSimpleName();
     private PresenterCallback presenter;
+    private AlbumMapper mapper;
 
     //ToDo: DI
     public AlbumsRepository(PresenterCallback presenter) {
         this.presenter = presenter;
+        mapper = new AlbumMapper();
     }
 
     public void loadSampleAlbums() {
@@ -25,5 +37,32 @@ public class AlbumsRepository {
         }, 2000);
 
         Log.d(TAG, "here");
+    }
+
+    public void loadAlbums() {
+        final List<AlbumResult> albumResultList = new ArrayList<>();
+        final List<Album> albums = new ArrayList<>();
+        App.getApiService().getAlbums().enqueue(new Callback<AlbumsResponse>() {
+            @Override
+            public void onResponse(Call<AlbumsResponse> call, Response<AlbumsResponse> response) {
+                if (response.body() != null) {
+                    if (response.body().getAlbums() == null) {
+                        Log.d(TAG, "response error");
+//                        loadSampleAlbums();
+                        return;
+                    }
+                    albumResultList.addAll(response.body().getAlbums());
+                }
+                for (AlbumResult a : albumResultList) {
+                    albums.add(mapper.mapToEntity(a));
+                }
+                presenter.onAlbumsLoaded(albums);
+            }
+
+            @Override
+            public void onFailure(Call<AlbumsResponse> call, Throwable t) {
+                Log.d(TAG, "some error");
+            }
+        });
     }
 }

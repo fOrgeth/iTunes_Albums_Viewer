@@ -9,9 +9,9 @@ public class AlbumsResponse {
     @SerializedName("resultCount")
     @Expose
     private Long resultCount;
-    @SerializedName("results")
+    @SerializedName("albums")
     @Expose
-    private List<Result> results = null;
+    private List<AlbumResult> albums = null;
 
     public Long getResultCount() {
         return resultCount;
@@ -21,12 +21,12 @@ public class AlbumsResponse {
         this.resultCount = resultCount;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<AlbumResult> getAlbums() {
+        return albums;
     }
 
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setAlbums(List<AlbumResult> albums) {
+        this.albums = albums;
     }
 
 }

@@ -2,7 +2,7 @@ package com.th.forge.albums.data.network.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+public class AlbumResult {
 
     @SerializedName("wrapperType")
     @Expose
