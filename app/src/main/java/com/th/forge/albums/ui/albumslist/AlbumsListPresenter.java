@@ -14,7 +14,7 @@ import java.util.List;
 
 @InjectViewState
 public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements PresenterCallback {
-    public static final String TAG = AlbumsListPresenter.class.getSimpleName();
+    private static final String TAG = AlbumsListPresenter.class.getSimpleName();
 
     void showError(int error) {
         getViewState().showError(error);
@@ -25,7 +25,7 @@ public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements
         new AlbumsRepository(this).loadAlbums();
     }
 
-    void searchByAlbum() {
+    void searchAlbumByTitle() {
 
     }
 
@@ -35,8 +35,13 @@ public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements
         if (albums.size() == 0) {
             getViewState().showError(R.string.albums_not_found);
         } else {
-            Log.d(TAG,"onLoaded else");
+            Log.d(TAG, "onLoaded else");
             getViewState().setupAlbums(albums);
         }
+    }
+
+    @Override
+    public void onError(int errorResource) {
+        showError(errorResource);
     }
 }

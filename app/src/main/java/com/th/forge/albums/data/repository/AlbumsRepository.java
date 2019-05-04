@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.th.forge.albums.App;
+import com.th.forge.albums.R;
 import com.th.forge.albums.data.db.model.Album;
 import com.th.forge.albums.data.db.model.AlbumMapper;
 import com.th.forge.albums.data.db.model.Mapper;
@@ -19,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AlbumsRepository {
-    public static final String TAG = AlbumsRepository.class.getSimpleName();
+    private static final String TAG = AlbumsRepository.class.getSimpleName();
     private PresenterCallback presenter;
     private AlbumMapper mapper;
 
@@ -46,13 +47,9 @@ public class AlbumsRepository {
             @Override
             public void onResponse(Call<AlbumsResponse> call, Response<AlbumsResponse> response) {
                 if (response.body() != null) {
-                    if (response.body().getAlbums() == null) {
-                        Log.d(TAG, "response error");
-//                        loadSampleAlbums();
-                        return;
-                    }
-                    albumResultList.addAll(response.body().getAlbums());
-                }
+                    if (response.body().getAlbums() == null) presenter.onError(R.string.empty_response_albums_result);
+                    else albumResultList.addAll(response.body().getAlbums());
+                } else presenter.onError(R.string.null_response_body);
                 for (AlbumResult a : albumResultList) {
                     albums.add(mapper.mapToEntity(a));
                 }
@@ -62,6 +59,7 @@ public class AlbumsRepository {
             @Override
             public void onFailure(Call<AlbumsResponse> call, Throwable t) {
                 Log.d(TAG, "some error");
+                presenter.onError(R.string.api_response_failure);
             }
         });
     }

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Albums</string>
     <string name="albums_not_found">Albums not found</string>
+    <string name="api_response_failure">API Response failure</string>
+    <string name="null_response_body">Response body is null</string>
+    <string name="empty_response_albums_result">Albums response is empty</string>
 </resources>

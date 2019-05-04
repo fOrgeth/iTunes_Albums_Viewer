@@ -12,6 +12,7 @@ public class Sample {
         for (int i = 0; i < 20; i++) {
             Album album = new Album("Title " + i + 1,
                     "https://is2-ssl.mzstatic.com/image/thumb/Music/v4/07/be/69/07be695d-31cb-a84c-c9d8-de3dd33fe414/source/600x600bb.jpg",
+                    (Long.valueOf(i)) * 5,
                     (Long.valueOf(i)) * 3);
             sample.add(album);
         }

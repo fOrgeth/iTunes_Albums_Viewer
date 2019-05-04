@@ -9,9 +9,9 @@ public class AlbumsResponse {
     @SerializedName("resultCount")
     @Expose
     private Long resultCount;
-    @SerializedName("albums")
+    @SerializedName("results")
     @Expose
-    private List<AlbumResult> albums = null;
+    private List<AlbumResult> albums;
 
     public Long getResultCount() {
         return resultCount;

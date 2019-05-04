@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsListView {
-    public static final String TAG = AlbumsListFragment.class.getSimpleName();
+    private static final String TAG = AlbumsListFragment.class.getSimpleName();
 
     @InjectPresenter
     AlbumsListPresenter albumsPresenter;

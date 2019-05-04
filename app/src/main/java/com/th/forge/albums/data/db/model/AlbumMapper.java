@@ -11,6 +11,10 @@ public class AlbumMapper implements Mapper<Album, AlbumResult> {
 
     @Override
     public Album mapToEntity(AlbumResult type) {
-        return new Album(type.getCollectionName(),type.getArtworkUrl100(),type.getTrackCount());
+        //ToDo: make url to higher resolution
+        return new Album(type.getCollectionName(),
+                type.getArtworkUrl100(),
+                type.getCollectionId(),
+                type.getTrackCount());
     }
 }
