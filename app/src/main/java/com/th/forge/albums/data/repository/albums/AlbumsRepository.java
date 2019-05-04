@@ -1,4 +1,4 @@
-package com.th.forge.albums.data.repository;
+package com.th.forge.albums.data.repository.albums;
 
 import android.os.Handler;
 import android.util.Log;
@@ -7,10 +7,9 @@ import com.th.forge.albums.App;
 import com.th.forge.albums.R;
 import com.th.forge.albums.data.db.model.Album;
 import com.th.forge.albums.data.db.model.AlbumMapper;
-import com.th.forge.albums.data.db.model.Mapper;
-import com.th.forge.albums.data.network.ApiService;
-import com.th.forge.albums.data.network.model.AlbumResult;
-import com.th.forge.albums.data.network.model.AlbumsResponse;
+import com.th.forge.albums.data.network.model.albumslist.AlbumResult;
+import com.th.forge.albums.data.network.model.albumslist.AlbumsResponse;
+import com.th.forge.albums.data.repository.Sample;
 
 import java.util.ArrayList;
 import java.util.List;

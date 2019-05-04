@@ -1,4 +1,4 @@
-package com.th.forge.albums.data.network.model;
+package com.th.forge.albums.data.network.model.albumslist;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

@@ -30,9 +30,15 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
     AlbumsListPresenter albumsPresenter;
 
     private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
     private AlbumsListAdapter adapter;
     private CircularProgressView circularProgressView;
     private TextView txtNoAlbums;
+    private FragmentTransactionCallback callback;
+
+    public void setFragmentTransactionCallback(FragmentTransactionCallback callback) {
+        this.callback = callback;
+    }
 
     @Nullable
     @Override
@@ -42,6 +48,7 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
         recyclerView = rootView.findViewById(R.id.rv_albums);
         txtNoAlbums = rootView.findViewById(R.id.txt_albums_error);
         initUi();
+        callback = (FragmentTransactionCallback) getActivity();
         albumsPresenter.loadAlbums();
         return rootView;
     }
@@ -50,18 +57,22 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                float columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160,
-                        getActivity().getResources().getDisplayMetrics());
                 int width = recyclerView.getWidth();
+                float columnWidth = width;
+                if (getActivity() != null) {
+                    columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160,
+                            getActivity().getResources().getDisplayMetrics());
+                }
                 if (width > 0) {
                     int columnCount = Math.round(width / columnWidth);
-                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), columnCount));
+                    layoutManager = new GridLayoutManager(getActivity(), columnCount);
+                    recyclerView.setLayoutManager(layoutManager);
                     recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
             }
         });
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new AlbumsListAdapter();
+        adapter = new AlbumsListAdapter(callback);
         adapter.setupAlbums(new ArrayList<>());
         recyclerView.setAdapter(adapter);
     }

@@ -2,7 +2,7 @@ package com.th.forge.albums.data.network;
 
 import android.support.annotation.NonNull;
 
-import com.th.forge.albums.data.network.model.AlbumsResponse;
+import com.th.forge.albums.data.network.model.albumslist.AlbumsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

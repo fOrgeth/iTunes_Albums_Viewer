@@ -1,4 +1,4 @@
-package com.th.forge.albums.data.repository;
+package com.th.forge.albums.data.repository.albums;
 
 import com.th.forge.albums.data.db.model.Album;
 

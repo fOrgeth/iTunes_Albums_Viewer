@@ -7,8 +7,8 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.th.forge.albums.R;
 import com.th.forge.albums.data.db.model.Album;
-import com.th.forge.albums.data.repository.AlbumsRepository;
-import com.th.forge.albums.data.repository.PresenterCallback;
+import com.th.forge.albums.data.repository.albums.AlbumsRepository;
+import com.th.forge.albums.data.repository.albums.PresenterCallback;
 
 import java.util.List;
 

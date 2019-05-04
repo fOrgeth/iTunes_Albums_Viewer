@@ -1,4 +1,4 @@
-package com.th.forge.albums.data.network.model;
+package com.th.forge.albums.data.network.model.albumslist;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
