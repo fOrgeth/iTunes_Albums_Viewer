@@ -6,7 +6,7 @@ import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.th.forge.albums.R;
-import com.th.forge.albums.data.db.model.Album;
+import com.th.forge.albums.data.db.model.album.Album;
 import com.th.forge.albums.data.repository.albums.AlbumsRepository;
 import com.th.forge.albums.data.repository.albums.PresenterCallback;
 

@@ -9,11 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.th.forge.albums.R;
-import com.th.forge.albums.data.db.model.Album;
+import com.th.forge.albums.data.db.model.album.Album;
 import com.th.forge.albums.utils.GlideApp;
-import com.th.forge.albums.utils.MyGlide;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -15,6 +15,12 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.th.forge.albums.R;
+import com.th.forge.albums.data.db.model.album.Album;
+import com.th.forge.albums.data.db.model.track.Track;
+import com.th.forge.albums.utils.GlideApp;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.th.forge.albums.utils.Constants.ALBUM_ID;
 
@@ -35,14 +41,12 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
 
     private Long albumId;
 
-    private String text = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             albumId = getArguments().getLong(ALBUM_ID);
-            text = Long.toString(getArguments().getLong(ALBUM_ID));
         }
     }
 
@@ -52,7 +56,7 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
         View rootView = inflater.inflate(R.layout.fragment_album_detail, container, false);
         txtAlbumTitle = rootView.findViewById(R.id.txt_album_title);
         txtAlbumArtist = rootView.findViewById(R.id.txt_album_artist);
-        txtNoAlbum = rootView.findViewById(R.id.txt_albums_error);
+        txtNoAlbum = rootView.findViewById(R.id.txt_chosen_album_error);
         circularProgressView = rootView.findViewById(R.id.cpv_chosen_album);
         recyclerView = rootView.findViewById(R.id.rv_track_list);
         imgAlbumCover = rootView.findViewById(R.id.img_album_cover);
@@ -64,7 +68,7 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
     private void initUi() {
         layoutManager = new LinearLayoutManager(getActivity());
         adapter = new TrackListAdapter();
-
+        adapter.setupTracks(new ArrayList<>());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
@@ -75,8 +79,16 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
     }
 
     @Override
-    public void setupAlbum() {
-
+    public void setupAlbum(Album albumInfo, List<Track> trackList) {
+        recyclerView.setVisibility(View.VISIBLE);
+        txtNoAlbum.setVisibility(View.GONE);
+        adapter.setupTracks(trackList);
+        txtAlbumTitle.setText(albumInfo.getTitle());
+        //ToDo: add artist field or remove
+        txtAlbumArtist.setText(albumInfo.getCollectionId().toString());
+        if (getActivity() != null) {
+            GlideApp.with(getActivity()).load(albumInfo.getArtWorkUrl()).into(imgAlbumCover);
+        }
     }
 
     @Override
@@ -86,6 +98,6 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
 
     @Override
     public void endLoading() {
-
+        circularProgressView.setVisibility(View.GONE);
     }
 }

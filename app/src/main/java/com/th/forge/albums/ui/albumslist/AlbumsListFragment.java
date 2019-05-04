@@ -18,7 +18,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.th.forge.albums.R;
-import com.th.forge.albums.data.db.model.Album;
+import com.th.forge.albums.data.db.model.album.Album;
 
 import java.util.ArrayList;
 import java.util.List;

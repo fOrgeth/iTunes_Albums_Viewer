@@ -3,7 +3,7 @@ package com.th.forge.albums.ui.albumslist;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
-import com.th.forge.albums.data.db.model.Album;
+import com.th.forge.albums.data.db.model.album.Album;
 
 import java.util.List;
 

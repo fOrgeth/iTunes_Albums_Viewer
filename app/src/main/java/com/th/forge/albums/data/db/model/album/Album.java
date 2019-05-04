@@ -1,4 +1,4 @@
-package com.th.forge.albums.data.db.model;
+package com.th.forge.albums.data.db.model.album;
 
 public class Album {
     private String title;

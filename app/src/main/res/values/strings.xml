@@ -4,4 +4,6 @@
     <string name="api_response_failure">API Response failure</string>
     <string name="null_response_body">Response body is null</string>
     <string name="empty_response_albums_result">Albums response is empty</string>
+    <string name="empty_response_album_detail">Empty result set</string>
+    <string name="detail_album_loading_error">Album loading error</string>
 </resources>

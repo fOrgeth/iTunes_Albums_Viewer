@@ -2,6 +2,7 @@ package com.th.forge.albums.data.network;
 
 import android.support.annotation.NonNull;
 
+import com.th.forge.albums.data.network.model.albumdetail.AlbumResponse;
 import com.th.forge.albums.data.network.model.albumslist.AlbumsResponse;
 
 import retrofit2.Call;
@@ -16,5 +17,5 @@ public interface ApiService {
                      @Query("limit") String limit*/);
 
     @GET("lookup?entity=song")
-    Call<AlbumsResponse> getAlbumById(@NonNull @Query("id") Long albumId);
+    Call<AlbumResponse> getAlbumById(@NonNull @Query("id") Long albumId);
 }

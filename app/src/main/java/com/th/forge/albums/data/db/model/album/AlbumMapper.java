@@ -1,5 +1,6 @@
-package com.th.forge.albums.data.db.model;
+package com.th.forge.albums.data.db.model.album;
 
+import com.th.forge.albums.data.db.model.Mapper;
 import com.th.forge.albums.data.network.model.albumslist.AlbumResult;
 
 public class AlbumMapper implements Mapper<Album, AlbumResult> {

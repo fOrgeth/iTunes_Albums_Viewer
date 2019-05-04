@@ -1,6 +1,6 @@
 package com.th.forge.albums.data.repository.albums;
 
-import com.th.forge.albums.data.db.model.Album;
+import com.th.forge.albums.data.db.model.album.Album;
 
 import java.util.List;
 

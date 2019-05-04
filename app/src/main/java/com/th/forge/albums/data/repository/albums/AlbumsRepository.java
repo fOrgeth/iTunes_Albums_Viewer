@@ -5,8 +5,9 @@ import android.util.Log;
 
 import com.th.forge.albums.App;
 import com.th.forge.albums.R;
-import com.th.forge.albums.data.db.model.Album;
-import com.th.forge.albums.data.db.model.AlbumMapper;
+import com.th.forge.albums.data.db.model.Mapper;
+import com.th.forge.albums.data.db.model.album.Album;
+import com.th.forge.albums.data.db.model.album.AlbumMapper;
 import com.th.forge.albums.data.network.model.albumslist.AlbumResult;
 import com.th.forge.albums.data.network.model.albumslist.AlbumsResponse;
 import com.th.forge.albums.data.repository.Sample;
@@ -46,13 +47,16 @@ public class AlbumsRepository {
             @Override
             public void onResponse(Call<AlbumsResponse> call, Response<AlbumsResponse> response) {
                 if (response.body() != null) {
-                    if (response.body().getAlbums() == null) presenter.onError(R.string.empty_response_albums_result);
-                    else albumResultList.addAll(response.body().getAlbums());
+                    if (response.body().getAlbums() == null)
+                        presenter.onError(R.string.empty_response_albums_result);
+                    else {
+                        albumResultList.addAll(response.body().getAlbums());
+                        for (AlbumResult a : albumResultList) {
+                            albums.add(mapper.mapToEntity(a));
+                        }
+                        presenter.onAlbumsLoaded(albums);
+                    }
                 } else presenter.onError(R.string.null_response_body);
-                for (AlbumResult a : albumResultList) {
-                    albums.add(mapper.mapToEntity(a));
-                }
-                presenter.onAlbumsLoaded(albums);
             }
 
             @Override
