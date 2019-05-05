@@ -3,7 +3,6 @@ package com.th.forge.albums.data.repository.singleAlbum;
 import com.th.forge.albums.App;
 import com.th.forge.albums.R;
 import com.th.forge.albums.data.db.model.album.Album;
-import com.th.forge.albums.data.db.model.album.AlbumMapper;
 import com.th.forge.albums.data.db.model.track.Track;
 import com.th.forge.albums.data.db.model.track.TrackMapper;
 import com.th.forge.albums.data.network.model.albumdetail.AlbumResponse;
@@ -43,8 +42,12 @@ public class SingleAlbumRepository {
                             trackList.add(mapper.mapToEntity(albumResult.get(i)));
                         }
                         //ToDo: DRY
+                        String tmp = albumResult.get(0).getArtworkUrl100();
+                        int endpoint = tmp.lastIndexOf("/") + 1;
+                        String newUrl = tmp.substring(0, endpoint) + "600x600bb.jpg";
                         Album albumInfo = new Album(albumResult.get(0).getCollectionName(),
-                                albumResult.get(0).getArtworkUrl100(),
+                                newUrl,
+                                albumResult.get(0).getArtistName(),
                                 albumResult.get(0).getCollectionId(),
                                 albumResult.get(0).getTrackCount());
                         presenter.onAlbumLoaded(albumInfo, trackList);

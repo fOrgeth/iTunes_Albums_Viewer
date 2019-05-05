@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.th.forge.albums.BuildConfig;
 import com.th.forge.albums.R;
 import com.th.forge.albums.ui.albumslist.FragmentTransactionCallback;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-
-import static com.th.forge.albums.utils.Constants.ALBUM_ID;
 
 public class MainActivity extends AppCompatActivity implements FragmentTransactionCallback {
 
@@ -37,9 +36,10 @@ public class MainActivity extends AppCompatActivity implements FragmentTransacti
     }
 
     @Override
-    public void showDetail(View view, Long collectionId) {
+    public void showDetail(View view, Long collectionId, String title) {
         Bundle bundle = new Bundle();
-        bundle.putLong(ALBUM_ID, collectionId);
+        bundle.putLong(BuildConfig.ALBUM_ID, collectionId);
+        bundle.putString(BuildConfig.ALBUM_TITLE, title);
         //ToDo: navController.navigate(R.id.action_list_to__detail, bundle); - don't work. Why?
         Navigation.findNavController(view).navigate(R.id.action_list_to__detail, bundle);
     }

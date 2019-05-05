@@ -67,9 +67,7 @@ public class AlbumsListAdapter extends RecyclerView.Adapter<AlbumsListAdapter.Al
         public void bind(Album album, FragmentTransactionCallback callback) {
             this.callback = callback;
             //ToDO: DRY
-            thumbnail.setOnClickListener((view) -> {
-                callback.showDetail(view, album.getCollectionId());
-            });
+            thumbnail.setOnClickListener((view) -> callShowDetail(view, album));
             this.album = album;
             String url = this.album.getArtWorkUrl();
             if (url != null) {
@@ -79,9 +77,13 @@ public class AlbumsListAdapter extends RecyclerView.Adapter<AlbumsListAdapter.Al
         }
 
         @Override
-        public void onClick(View v) {
+        public void onClick(View view) {
             Log.d(TAG, "onClick");
-            callback.showDetail(v, album.getCollectionId());
+            callShowDetail(view, album);
+        }
+
+        private void callShowDetail(View view, Album album) {
+            callback.showDetail(view, album.getCollectionId(), album.getTitle());
         }
     }
 }

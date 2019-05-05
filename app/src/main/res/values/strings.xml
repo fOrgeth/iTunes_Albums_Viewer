@@ -9,4 +9,5 @@
     <string name="menu_search_hint">Enter album title</string>
     <string name="fragment_albums_list_label">Albums</string>
     <string name="fragment_album_detail_label">Album info</string>
+    <string name="txt_detail_tracklist">Tracklist:</string>
 </resources>

@@ -33,7 +33,7 @@ public class TrackListAdapter extends RecyclerView.Adapter<TrackListAdapter.Trac
 
     @Override
     public void onBindViewHolder(@NonNull TracksViewHolder viewHolder, int position) {
-        viewHolder.bind(trackList.get(position));
+        viewHolder.bind(trackList.get(position), position + 1);
     }
 
     @Override
@@ -51,8 +51,9 @@ public class TrackListAdapter extends RecyclerView.Adapter<TrackListAdapter.Trac
             trackTime = itemView.findViewById(R.id.txt_track_time);
         }
 
-        public void bind(Track track) {
-            trackTitle.setText(track.getTrackName());
+        public void bind(Track track, int trackIndex) {
+            //ToDo: track index to separate TextView
+            trackTitle.setText(String.format("%02d. %s", trackIndex, track.getTrackName()));
             trackTime.setText(track.getTrackTime());
         }
     }
