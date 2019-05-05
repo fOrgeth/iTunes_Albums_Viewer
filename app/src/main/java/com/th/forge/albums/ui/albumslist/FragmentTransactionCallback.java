@@ -1,5 +1,7 @@
 package com.th.forge.albums.ui.albumslist;
 
+import android.view.View;
+
 public interface FragmentTransactionCallback {
-    void showDetail(Long collectionId);
+    void showDetail(View v, Long collectionId);
 }

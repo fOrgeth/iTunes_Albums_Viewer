@@ -40,15 +40,12 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
     private TextView txtNoAlbums;
     private FragmentTransactionCallback callback;
 
-    public void setFragmentTransactionCallback(FragmentTransactionCallback callback) {
-        this.callback = callback;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
+        callback = (FragmentTransactionCallback) getActivity();
     }
 
     @Nullable
@@ -59,7 +56,6 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
         recyclerView = rootView.findViewById(R.id.rv_albums);
         txtNoAlbums = rootView.findViewById(R.id.txt_albums_error);
         initUi();
-        callback = (FragmentTransactionCallback) getActivity();
         albumsPresenter.loadAlbums();
         return rootView;
     }

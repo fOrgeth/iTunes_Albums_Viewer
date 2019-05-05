@@ -68,7 +68,7 @@ public class AlbumsListAdapter extends RecyclerView.Adapter<AlbumsListAdapter.Al
             this.callback = callback;
             //ToDO: DRY
             thumbnail.setOnClickListener((view) -> {
-                callback.showDetail(album.getCollectionId());
+                callback.showDetail(view, album.getCollectionId());
             });
             this.album = album;
             String url = this.album.getArtWorkUrl();
@@ -81,7 +81,7 @@ public class AlbumsListAdapter extends RecyclerView.Adapter<AlbumsListAdapter.Al
         @Override
         public void onClick(View v) {
             Log.d(TAG, "onClick");
-            callback.showDetail(album.getCollectionId());
+            callback.showDetail(v, album.getCollectionId());
         }
     }
 }

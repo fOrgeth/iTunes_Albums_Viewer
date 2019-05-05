@@ -7,4 +7,6 @@
     <string name="empty_response_album_detail">Empty result set</string>
     <string name="detail_album_loading_error">Album loading error</string>
     <string name="menu_search_hint">Enter album title</string>
+    <string name="fragment_albums_list_label">Albums</string>
+    <string name="fragment_album_detail_label">Album info</string>
 </resources>
