@@ -19,9 +19,11 @@ public class MainActivity extends AppCompatActivity implements FragmentTransacti
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //ToDo: saveInstance
-        Fragment fragment = new AlbumsListFragment();
-        ((AlbumsListFragment) fragment).setFragmentTransactionCallback(this);
-        addFragment(fragment);
+        if(savedInstanceState==null){
+            Fragment fragment = new AlbumsListFragment();
+            ((AlbumsListFragment) fragment).setFragmentTransactionCallback(this);
+            addFragment(fragment);
+        }
     }
 
 

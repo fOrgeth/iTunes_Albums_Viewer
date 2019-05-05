@@ -50,7 +50,6 @@ public class SingleAlbumRepository {
                         presenter.onAlbumLoaded(albumInfo, trackList);
                     }
                 } else presenter.onError(R.string.null_response_body);
-
             }
 
             @Override

@@ -6,4 +6,5 @@
     <string name="empty_response_albums_result">Albums response is empty</string>
     <string name="empty_response_album_detail">Empty result set</string>
     <string name="detail_album_loading_error">Album loading error</string>
+    <string name="menu_search_hint">Enter album title</string>
 </resources>

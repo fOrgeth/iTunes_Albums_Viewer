@@ -1,6 +1,7 @@
 package com.th.forge.albums.ui.albumslist;
 
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
@@ -15,18 +16,26 @@ import java.util.List;
 @InjectViewState
 public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements PresenterCallback {
     private static final String TAG = AlbumsListPresenter.class.getSimpleName();
+    private AlbumsRepository repository;
+
+    //ToDo: DI
+    public AlbumsListPresenter() {
+        repository = new AlbumsRepository(this);
+    }
 
     void showError(int error) {
+        getViewState().endLoading();
         getViewState().showError(error);
     }
 
     void loadAlbums() {
         getViewState().startLoading();
-        new AlbumsRepository(this).loadAlbums();
+        repository.loadAlbums();
     }
 
-    void searchAlbumByTitle() {
-
+    void searchAlbumsByTitle(@NonNull String s) {
+        getViewState().startLoading();
+        repository.loadAlbums(s);
     }
 
     @Override

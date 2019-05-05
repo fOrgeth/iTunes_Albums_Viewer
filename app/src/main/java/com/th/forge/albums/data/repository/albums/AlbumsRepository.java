@@ -41,9 +41,15 @@ public class AlbumsRepository {
     }
 
     public void loadAlbums() {
+        loadAlbums("*");
+    }
+
+    public void loadAlbums(String searchText) {
         final List<AlbumResult> albumResultList = new ArrayList<>();
         final List<Album> albums = new ArrayList<>();
-        App.getApiService().getAlbums().enqueue(new Callback<AlbumsResponse>() {
+        App.getApiService().getAlbums(searchText,
+                "us",
+                "50").enqueue(new Callback<AlbumsResponse>() {
             @Override
             public void onResponse(Call<AlbumsResponse> call, Response<AlbumsResponse> response) {
                 if (response.body() != null) {

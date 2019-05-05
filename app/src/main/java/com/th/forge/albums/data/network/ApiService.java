@@ -10,11 +10,11 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    @GET("search?term=*&entity=album&country=us&limit=50")
-    Call<AlbumsResponse> getAlbums(/*@NonNull @Query("term") String searchString,
-                     @NonNull @Query("country") String countryCode,
-                     @Query("entity") String resultType,
-                     @Query("limit") String limit*/);
+
+    @GET("search?entity=album")
+    Call<AlbumsResponse> getAlbums(@NonNull @Query("term") String searchString,
+                                   @NonNull @Query("country") String countryCode,
+                                   @Query("limit") String limit);
 
     @GET("lookup?entity=song")
     Call<AlbumResponse> getAlbumById(@NonNull @Query("id") Long albumId);
