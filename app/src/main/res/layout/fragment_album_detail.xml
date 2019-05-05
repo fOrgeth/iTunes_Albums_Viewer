@@ -6,10 +6,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp">
+    >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/tragic_kingdom"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -30,53 +27,81 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45"/>
+            app:layout_constraintGuide_percent="0.55"/>
 
-        <TextView
-            android:id="@+id/txt_album_title"
-            style="@style/TextViewTitle"
+        <LinearLayout
+            android:id="@+id/layout_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginLeft="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:layout_marginRight="@dimen/margin_medium"
-            app:layout_constraintTop_toBottomOf="@id/img_album_cover"
-            tools:text="TITLE"/>
+            android:layout_marginStart="@dimen/margin_xsmall"
+            android:layout_marginLeft="@dimen/margin_xsmall"
+            android:layout_marginEnd="@dimen/margin_xsmall"
+            android:layout_marginRight="@dimen/margin_xsmall"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/img_album_cover">
 
-        <TextView
-            android:id="@+id/txt_album_artist"
-            style="@style/TextViewArtist"
+            <TextView
+                style="@style/TextViewPreTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_pre_title"/>
+
+            <TextView
+                android:id="@+id/txt_album_title"
+                style="@style/TextViewTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="TITLE"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_artist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginLeft="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:layout_marginRight="@dimen/margin_medium"
-            app:layout_constraintTop_toBottomOf="@id/txt_album_title"
-            tools:text="ARTIST"/>
+            android:layout_marginStart="@dimen/margin_xsmall"
+            android:layout_marginLeft="@dimen/margin_xsmall"
+            android:layout_marginEnd="@dimen/margin_xsmall"
+            android:layout_marginRight="@dimen/margin_xsmall"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layout_title">
+
+            <TextView
+                style="@style/TextViewPreArtist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_pre_artist"/>
+
+            <TextView
+                android:id="@+id/txt_album_artist"
+                style="@style/TextViewArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="ARTIST"/>
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/txt_tracklist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginLeft="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginRight="@dimen/margin_medium"
             android:text="@string/txt_tracklist"
             android:textSize="@dimen/detail_tracklist_text_size"
-            app:layout_constraintTop_toBottomOf="@id/txt_album_artist"/>
+            app:layout_constraintTop_toBottomOf="@id/layout_artist"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_track_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_large"
-            android:layout_marginLeft="@dimen/margin_large"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_tracklist"/>
 

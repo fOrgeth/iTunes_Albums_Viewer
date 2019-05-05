@@ -10,4 +10,6 @@
     <string name="fragment_albums_list_label">Albums</string>
     <string name="fragment_album_detail_label">Album info</string>
     <string name="txt_tracklist">Tracklist:</string>
+    <string name="txt_pre_title">Title:</string>
+    <string name="txt_pre_artist">Artist:</string>
 </resources>
