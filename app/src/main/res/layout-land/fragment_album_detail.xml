@@ -28,22 +28,15 @@
             app:layout_constraintEnd_toStartOf="@id/guideline"/>
 
         <TextView
-            android:id="@+id/txt_album_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/img_album_cover"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/guideline"
-            tools:text="TITLE"/>
-
-        <TextView
             android:id="@+id/txt_album_artist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txt_album_title"
+            style="@style/TextViewArtist"
+            app:layout_constraintTop_toBottomOf="@id/img_album_cover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             tools:text="ARTIST"/>
+
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
@@ -51,21 +44,47 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.35"/>
 
+        <TextView
+            android:id="@+id/txt_album_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/TextViewTitle"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            tools:text="TITLE"/>
+        <TextView
+            android:id="@+id/txt_tracklist"
+            android:text="@string/txt_tracklist"
+            android:textSize="@dimen/detail_tracklist_text_size"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_album_title"
+            app:layout_constraintStart_toEndOf="@id/guideline"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_track_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_tracklist"/>
 
     </android.support.constraint.ConstraintLayout>
 

@@ -84,7 +84,7 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
         adapter.setupTracks(trackList);
         txtAlbumTitle.setText(albumInfo.getTitle());
         //ToDo: add artist field or remove
-        txtAlbumArtist.setText(albumInfo.getCollectionId().toString());
+        txtAlbumArtist.setText(albumInfo.getArtistName());
         if (getActivity() != null) {
             GlideApp.with(getActivity()).load(albumInfo.getArtWorkUrl()).into(imgAlbumCover);
         }
