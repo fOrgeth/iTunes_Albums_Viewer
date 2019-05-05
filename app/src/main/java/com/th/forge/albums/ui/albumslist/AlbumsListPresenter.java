@@ -11,6 +11,8 @@ import com.th.forge.albums.data.db.model.album.Album;
 import com.th.forge.albums.data.repository.albums.AlbumsRepository;
 import com.th.forge.albums.data.repository.albums.PresenterCallback;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @InjectViewState
@@ -45,8 +47,14 @@ public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements
             getViewState().showError(R.string.albums_not_found);
         } else {
             Log.d(TAG, "onLoaded else");
-            getViewState().setupAlbums(albums);
+            getViewState().setupAlbums(getAlbumsSortedAphabetically(albums));
         }
+    }
+
+    private List<Album> getAlbumsSortedAphabetically(List<Album> albums) {
+        List<Album> sortedAlbums = new ArrayList<>(albums);
+        Collections.sort(sortedAlbums, (o1, o2) -> o1.getTitle().compareTo(o2.getTitle()));
+        return sortedAlbums;
     }
 
     @Override
