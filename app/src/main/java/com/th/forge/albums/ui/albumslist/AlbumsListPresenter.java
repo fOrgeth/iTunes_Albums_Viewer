@@ -6,8 +6,10 @@ import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.th.forge.albums.App;
 import com.th.forge.albums.R;
 import com.th.forge.albums.data.db.model.album.Album;
+import com.th.forge.albums.data.db.sharedpref.SharedPrefStorage;
 import com.th.forge.albums.data.repository.albums.AlbumsRepository;
 import com.th.forge.albums.data.repository.albums.PresenterCallback;
 
@@ -19,10 +21,12 @@ import java.util.List;
 public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements PresenterCallback {
     private static final String TAG = AlbumsListPresenter.class.getSimpleName();
     private AlbumsRepository repository;
+    private SharedPrefStorage sharedPrefStorage;
 
     //ToDo: DI
     public AlbumsListPresenter() {
         repository = new AlbumsRepository(this);
+        sharedPrefStorage = App.getInstance().getSharedPrefStorage();
     }
 
     void showError(int error) {
@@ -32,11 +36,16 @@ public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements
 
     void loadAlbums() {
         getViewState().startLoading();
-        repository.loadAlbums();
+        if (sharedPrefStorage.getStoredQuery() == null) {
+            repository.loadAlbums();
+        } else {
+            searchAlbumsByTitle(sharedPrefStorage.getStoredQuery());
+        }
     }
 
     void searchAlbumsByTitle(@NonNull String s) {
         getViewState().startLoading();
+        sharedPrefStorage.storeQuery(s);
         repository.loadAlbums(s);
     }
 
@@ -60,5 +69,10 @@ public class AlbumsListPresenter extends MvpPresenter<AlbumsListView> implements
     @Override
     public void onError(int errorResource) {
         showError(errorResource);
+    }
+
+    void onClearSearch() {
+        sharedPrefStorage.storeQuery(null);
+        loadAlbums();
     }
 }

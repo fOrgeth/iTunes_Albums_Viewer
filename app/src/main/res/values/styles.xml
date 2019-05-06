@@ -12,8 +12,8 @@
     </style>
 
     <style name="ThemeToolbar" parent="ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">#EEEEEE</item>
+        <item name="android:textColorPrimary">#444444</item>
+        <item name="android:textColorSecondary">#888888</item>
     </style>
 
     <style name="TextViewTitle">

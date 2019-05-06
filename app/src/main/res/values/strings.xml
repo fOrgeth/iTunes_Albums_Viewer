@@ -13,4 +13,5 @@
     <string name="txt_pre_title">Title:</string>
     <string name="txt_pre_artist">Artist:</string>
     <string name="txt_pre_track_count">Track count:</string>
+    <string name="menu_clear_search_title">Clear Search</string>
 </resources>
