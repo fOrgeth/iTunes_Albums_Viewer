@@ -88,7 +88,7 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
                 int width = recyclerView.getWidth();
                 float columnWidth = width;
                 if (getActivity() != null) {
-                    columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160,
+                    columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200,
                             getActivity().getResources().getDisplayMetrics());
                 }
                 if (width > 0) {
