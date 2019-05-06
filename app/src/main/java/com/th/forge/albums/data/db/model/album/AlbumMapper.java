@@ -14,13 +14,17 @@ public class AlbumMapper implements Mapper<Album, AlbumResult> {
 
     @Override
     public Album mapToEntity(AlbumResult type) {
-        String newUrl = formatUrlToHigherRes(type.getArtworkUrl100());
+        String title = type.getCollectionName() == null ? "Unknown" : type.getCollectionName();
+        String artistName = type.getArtistName() == null ? "Unknown" : type.getArtistName();
+        String newUrl = type.getArtworkUrl100() == null ? null : formatUrlToHigherRes(type.getArtworkUrl100());
+        Long id = type.getCollectionId() == null ? 0L : type.getCollectionId();
+        Long trackCount = type.getTrackCount() == null ? 0L : type.getTrackCount();
         Log.d("AlbumMapper", newUrl);
-        return new Album(type.getCollectionName(),
+        return new Album(title,
                 newUrl,
-                type.getArtistName(),
-                type.getCollectionId(),
-                type.getTrackCount());
+                artistName,
+                id,
+                trackCount);
     }
 
     private String formatUrlToHigherRes(String tmp) {

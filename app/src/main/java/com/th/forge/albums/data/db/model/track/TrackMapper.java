@@ -13,10 +13,16 @@ public class TrackMapper implements Mapper<Track, AlbumResult> {
 
     @Override
     public Track mapToEntity(AlbumResult type) {
-        Long time = type.getTrackTimeMillis();
-        String formatedTrackTime = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(time),
-                TimeUnit.MILLISECONDS.toSeconds(time) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)));
-        return new Track(type.getTrackName(),
+        String formatedTrackTime = type.getTrackTimeMillis() == null ? "unknown" :
+                getFormatedTrackTime(type.getTrackTimeMillis());
+        String trackName = type.getTrackName() == null ? "Unknown" : type.getTrackName();
+        return new Track(trackName,
                 formatedTrackTime);
+    }
+
+    private String getFormatedTrackTime(Long timeInMillis) {
+        return String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(timeInMillis),
+                TimeUnit.MILLISECONDS.toSeconds(timeInMillis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeInMillis)));
+
     }
 }

@@ -1,5 +1,6 @@
 package com.th.forge.albums.ui.albumslist;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -52,6 +53,7 @@ public class AlbumsListAdapter extends RecyclerView.Adapter<AlbumsListAdapter.Al
     static class AlbumsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView thumbnail;
         private TextView title;
+        private TextView trackCount;
         private Album album;
         FragmentTransactionCallback callback;
 
@@ -59,11 +61,12 @@ public class AlbumsListAdapter extends RecyclerView.Adapter<AlbumsListAdapter.Al
             super(itemView);
             thumbnail = itemView.findViewById(R.id.thumbnail);
             thumbnail.setClickable(true);
-
+            trackCount = itemView.findViewById(R.id.txt_track_count);
             title = itemView.findViewById(R.id.title);
             itemView.setOnClickListener(this);
         }
 
+        @SuppressLint("SetTextI18n")
         public void bind(Album album, FragmentTransactionCallback callback) {
             this.callback = callback;
             //ToDO: DRY
@@ -73,6 +76,7 @@ public class AlbumsListAdapter extends RecyclerView.Adapter<AlbumsListAdapter.Al
             if (url != null) {
                 GlideApp.with(itemView.getContext()).load(url).into(thumbnail);
             }
+            trackCount.setText(album.getTrackCount().toString());
             title.setText(album.getTitle());
         }
 

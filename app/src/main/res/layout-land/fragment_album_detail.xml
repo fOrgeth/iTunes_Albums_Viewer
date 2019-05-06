@@ -6,10 +6,6 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp"
     android:orientation="horizontal">
 
     <android.support.constraint.ConstraintLayout
@@ -19,49 +15,23 @@
         <ImageView
             android:id="@+id/img_album_cover"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/tragic_kingdom"
+            android:src="@drawable/placeholder"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-        <LinearLayout
-            android:id="@+id/layout_artist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_xsmall"
-            android:layout_marginLeft="@dimen/margin_xsmall"
-            android:layout_marginEnd="@dimen/margin_xsmall"
-            android:layout_marginRight="@dimen/margin_xsmall"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_album_cover">
-
-            <TextView
-                style="@style/TextViewPreArtist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_pre_artist"/>
-
-            <TextView
-                android:id="@+id/txt_album_artist"
-                style="@style/TextViewArtist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="ARTIST"/>
-        </LinearLayout>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.35"/>
-
+            app:layout_constraintGuide_percent="0.44"/>
 
         <LinearLayout
             android:id="@+id/layout_title"
@@ -91,6 +61,32 @@
                 tools:text="TITLE"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/layout_artist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xsmall"
+            android:layout_marginLeft="@dimen/margin_xsmall"
+            android:layout_marginEnd="@dimen/margin_xsmall"
+            android:layout_marginRight="@dimen/margin_xsmall"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/layout_title">
+
+            <TextView
+                style="@style/TextViewPreArtist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_pre_artist"/>
+
+            <TextView
+                android:id="@+id/txt_album_artist"
+                style="@style/TextViewArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="ARTIST"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txt_tracklist"
@@ -105,7 +101,7 @@
             android:text="@string/txt_tracklist"
             android:textSize="@dimen/detail_tracklist_text_size"
             app:layout_constraintStart_toEndOf="@id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/layout_title"/>
+            app:layout_constraintTop_toBottomOf="@id/layout_artist"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_track_list"
@@ -137,6 +133,6 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         app:cpv_animAutostart="true"
-        app:cpv_color="@color/colorPrimary"
+        app:cpv_color="@color/colorAccent"
         app:cpv_indeterminate="true"/>
 </FrameLayout>

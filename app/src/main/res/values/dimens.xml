@@ -5,5 +5,13 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_xsmall">4dp</dimen>
     <dimen name="detail_tracklist_text_size">14dp</dimen>
+    <dimen name="text_size_title">20dp</dimen>
+    <dimen name="text_size_pre_title">@dimen/text_size_title</dimen>
+    <dimen name="text_size_artist">16dp</dimen>
+    <dimen name="text_size_pre_artist">@dimen/text_size_artist</dimen>
     <dimen name="margin_large">24dp</dimen>
+    <dimen name="text_size_item_track_title">14dp</dimen>
+    <dimen name="text_size_item_track_time">12dp</dimen>
+    <dimen name="text_size_list_album_title">12dp</dimen>
+    <dimen name="text_size_list_album_track_count">10dp</dimen>
 </resources>

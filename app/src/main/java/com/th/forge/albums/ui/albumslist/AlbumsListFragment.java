@@ -43,7 +43,6 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
         setHasOptionsMenu(true);
         callback = (FragmentTransactionCallback) getActivity();
     }
@@ -81,6 +80,17 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_clear:
+                albumsPresenter.onClearSearch();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void initUi() {
         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -88,7 +98,7 @@ public class AlbumsListFragment extends MvpAppCompatFragment implements AlbumsLi
                 int width = recyclerView.getWidth();
                 float columnWidth = width;
                 if (getActivity() != null) {
-                    columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 160,
+                    columnWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200,
                             getActivity().getResources().getDisplayMetrics());
                 }
                 if (width > 0) {

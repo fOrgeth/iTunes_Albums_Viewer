@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,10 +14,10 @@
         <ImageView
             android:id="@+id/img_album_cover"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/tragic_kingdom"
+            android:scaleType="fitCenter"
+            android:src="@drawable/placeholder"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -120,7 +119,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         app:cpv_animAutostart="true"
-        app:cpv_color="@color/colorPrimary"
+        app:cpv_color="@color/colorAccent"
         app:cpv_indeterminate="true"/>
 </FrameLayout>
 

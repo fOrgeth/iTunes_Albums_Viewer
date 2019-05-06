@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Albums</string>
     <string name="albums_not_found">Albums not found</string>
-    <string name="api_response_failure">API Response failure</string>
+    <string name="api_response_failure">API Response failure\nCheck internet connection</string>
     <string name="null_response_body">Response body is null</string>
     <string name="empty_response_albums_result">Albums response is empty</string>
     <string name="empty_response_album_detail">Empty result set</string>
@@ -12,4 +12,6 @@
     <string name="txt_tracklist">Tracklist:</string>
     <string name="txt_pre_title">Title:</string>
     <string name="txt_pre_artist">Artist:</string>
+    <string name="txt_pre_track_count">Track count:</string>
+    <string name="menu_clear_search_title">Clear Search</string>
 </resources>

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.th.forge.albums.data.db.sharedpref.SharedPrefStorage;
 import com.th.forge.albums.data.network.ApiService;
 
 import okhttp3.OkHttpClient;
@@ -14,6 +15,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class App extends Application {
     private static ApiService apiService;
     private Retrofit retrofit;
+    private static App instance;
+
+    public App() {
+        instance = this;
+    }
+
+    public static App getInstance() {
+        return instance;
+    }
 
     @Override
     public void onCreate() {
@@ -24,7 +34,6 @@ public class App extends Application {
         if (apiService == null) {
             apiService = retrofit.create(ApiService.class);
         }
-
     }
 
     private Retrofit buildRetrofit() {
@@ -52,4 +61,10 @@ public class App extends Application {
     public static ApiService getApiService() {
         return apiService;
     }
+
+    //ToDO: DI
+    public SharedPrefStorage getSharedPrefStorage() {
+        return new SharedPrefStorage(this);
+    }
+
 }
