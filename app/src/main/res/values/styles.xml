@@ -17,26 +17,26 @@
     </style>
 
     <style name="TextViewTitle">
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">@dimen/text_size_pre_title</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginStart">@dimen/margin_small</item>
         <item name="android:layout_marginLeft">@dimen/margin_small</item>
     </style>
 
     <style name="TextViewPreTitle">
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">@dimen/text_size_pre_title</item>
         <item name="android:alpha">0.5</item>
     </style>
 
     <style name="TextViewArtist">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">@dimen/text_size_artist</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginStart">@dimen/margin_small</item>
         <item name="android:layout_marginLeft">@dimen/margin_small</item>
     </style>
 
     <style name="TextViewPreArtist">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">@dimen/text_size_pre_artist</item>
         <item name="android:alpha">0.5</item>
     </style>
 
