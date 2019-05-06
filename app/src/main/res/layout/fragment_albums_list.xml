@@ -25,5 +25,5 @@
         android:visibility="gone"
         app:cpv_indeterminate="true"
         app:cpv_animAutostart="true"
-        app:cpv_color="@color/colorPrimary" />
+        app:cpv_color="@color/colorAccent" />
 </FrameLayout>
