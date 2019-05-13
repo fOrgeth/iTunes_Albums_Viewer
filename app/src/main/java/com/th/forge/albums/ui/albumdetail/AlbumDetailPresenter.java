@@ -16,6 +16,7 @@ import java.util.List;
 public class AlbumDetailPresenter extends MvpPresenter<AlbumDetailView> implements PresenterCallback {
 
     void showError(@StringRes int errorResource) {
+        getViewState().endLoading();
         getViewState().showError(errorResource);
     }
 
