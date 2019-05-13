@@ -1,5 +1,7 @@
 package com.th.forge.albums.ui.albumdetail;
 
+import android.support.annotation.StringRes;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.th.forge.albums.R;
@@ -13,8 +15,8 @@ import java.util.List;
 @InjectViewState
 public class AlbumDetailPresenter extends MvpPresenter<AlbumDetailView> implements PresenterCallback {
 
-    void showError(int errorResource) {
-
+    void showError(@StringRes int errorResource) {
+        getViewState().showError(errorResource);
     }
 
     void loadChosenAlbum(Long albumId) {
@@ -34,7 +36,7 @@ public class AlbumDetailPresenter extends MvpPresenter<AlbumDetailView> implemen
     }
 
     @Override
-    public void onError(int errorResource) {
-
+    public void onError(@StringRes int errorResource) {
+        showError(errorResource);
     }
 }

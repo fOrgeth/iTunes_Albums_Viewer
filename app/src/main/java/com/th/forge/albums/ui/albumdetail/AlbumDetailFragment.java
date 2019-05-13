@@ -29,7 +29,7 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
     @InjectPresenter
     AlbumDetailPresenter albumPresenter;
 
-    private TextView txtNoAlbum;
+    private TextView txtError;
     private TextView txtAlbumTitle;
     private TextView txtAlbumArtist;
     private RecyclerView recyclerView;
@@ -55,7 +55,7 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
         View rootView = inflater.inflate(R.layout.fragment_album_detail, container, false);
         txtAlbumTitle = rootView.findViewById(R.id.txt_album_title);
         txtAlbumArtist = rootView.findViewById(R.id.txt_album_artist);
-        txtNoAlbum = rootView.findViewById(R.id.txt_chosen_album_error);
+        txtError = rootView.findViewById(R.id.txt_chosen_album_error);
         circularProgressView = rootView.findViewById(R.id.cpv_chosen_album);
         recyclerView = rootView.findViewById(R.id.rv_track_list);
         imgAlbumCover = rootView.findViewById(R.id.img_album_cover);
@@ -73,14 +73,20 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
     }
 
     @Override
-    public void showError(int errorResource) {
+    public void startLoading() {
+        circularProgressView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
+    }
 
+    @Override
+    public void showError(int errorResource) {
+        txtError.setVisibility(View.VISIBLE);
+        txtError.setText(errorResource);
     }
 
     @Override
     public void setupAlbum(Album albumInfo, List<Track> trackList) {
         recyclerView.setVisibility(View.VISIBLE);
-        txtNoAlbum.setVisibility(View.GONE);
         adapter.setupTracks(trackList);
         txtAlbumTitle.setText(albumInfo.getTitle());
         //ToDo: add artist field or remove
@@ -88,11 +94,6 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
         if (getActivity() != null && albumInfo.getArtWorkUrl() != null) {
             GlideApp.with(getActivity()).load(albumInfo.getArtWorkUrl()).into(imgAlbumCover);
         }
-    }
-
-    @Override
-    public void startLoading() {
-
     }
 
     @Override

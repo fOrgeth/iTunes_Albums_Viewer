@@ -57,7 +57,7 @@ public class SingleAlbumRepository {
 
             @Override
             public void onFailure(Call<AlbumResponse> call, Throwable t) {
-
+                presenter.onError(R.string.api_response_failure);
             }
         });
     }

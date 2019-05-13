@@ -1,5 +1,7 @@
 package com.th.forge.albums.ui.albumdetail;
 
+import android.support.annotation.StringRes;
+
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @StateStrategyType(AddToEndSingleStrategy.class)
 public interface AlbumDetailView extends MvpView {
-    void showError(int errorResource);
+    void showError(@StringRes int errorResource);
     void setupAlbum(Album albumInfo, List<Track> trackList);
     void startLoading();
     void endLoading();
