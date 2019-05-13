@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
@@ -32,6 +33,9 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
     private TextView txtError;
     private TextView txtAlbumTitle;
     private TextView txtAlbumArtist;
+    private TextView txtTracklist;
+    private LinearLayout llAlbumTitle;
+    private LinearLayout llArtist;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private CircularProgressView circularProgressView;
@@ -59,6 +63,9 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
         circularProgressView = rootView.findViewById(R.id.cpv_chosen_album);
         recyclerView = rootView.findViewById(R.id.rv_track_list);
         imgAlbumCover = rootView.findViewById(R.id.img_album_cover);
+        txtTracklist = rootView.findViewById(R.id.txt_tracklist);
+        llAlbumTitle = rootView.findViewById(R.id.layout_title);
+        llArtist = rootView.findViewById(R.id.layout_artist);
         albumPresenter.loadChosenAlbum(albumId);
         initUi();
         return rootView;
@@ -80,6 +87,10 @@ public class AlbumDetailFragment extends MvpAppCompatFragment implements AlbumDe
 
     @Override
     public void showError(int errorResource) {
+        imgAlbumCover.setVisibility(View.GONE);
+        llAlbumTitle.setVisibility(View.GONE);
+        llArtist.setVisibility(View.GONE);
+        txtTracklist.setVisibility(View.GONE);
         txtError.setVisibility(View.VISIBLE);
         txtError.setText(errorResource);
     }
